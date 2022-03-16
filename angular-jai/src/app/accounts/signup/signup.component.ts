@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConsoleLoggerService } from 'src/app/services/consoleLogger.service';
 
 @Component({
   selector: 'signup-component',
@@ -10,13 +11,13 @@ export class SignupComponent implements OnInit {
   username:string="";
   password:string="";
   email:string=""
-  constructor() { }
+  constructor(private loggerService:ConsoleLoggerService) { }
 
   ngOnInit(): void {
   }
 
   signup(){
-    console.log(this.username,this.password,this.email);
+    this.loggerService.write(`${this.username},${this.password},${this.email}`);
   }
 
   clear():void{

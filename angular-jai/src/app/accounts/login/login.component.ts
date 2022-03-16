@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConsoleLoggerService } from 'src/app/services/consoleLogger.service';
 
 @Component({
   selector: 'login-component',
@@ -9,7 +10,7 @@ export class LoginComponent implements OnInit {
 
   username:string;
   password:string;
-  constructor() { 
+  constructor(private loggerSerivice:ConsoleLoggerService) { 
     this.username="";
     this.password="";
   }
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.password=value;
   }
   login():void{
-    console.log(this.username,this.password);
+    this.loggerSerivice.write(`${this.username},${this.password}`);
   }
   ngOnInit(): void {
   }
